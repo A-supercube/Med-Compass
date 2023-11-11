@@ -48,7 +48,7 @@ class RegScreen extends StatelessWidget {
                             suffixIcon: Icon(Icons.check,color: Colors.grey,),
                             label: Text('Full Name',style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color:Color(0xffB81736),
+                              color:Color.fromARGB(255, 146, 144, 247),
                             ),)
                         ),
                       ),
@@ -57,7 +57,7 @@ class RegScreen extends StatelessWidget {
                             suffixIcon: Icon(Icons.check,color: Colors.grey,),
                             label: Text('Phone or Gmail',style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color:Color(0xffB81736),
+                              color:Color.fromARGB(255, 146, 144, 247),
                             ),)
                         ),
                       ),
@@ -66,7 +66,7 @@ class RegScreen extends StatelessWidget {
                             suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
                             label: Text('Password',style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color:Color(0xffB81736),
+                              color:Color.fromARGB(255, 146, 144, 247),
                             ),)
                         ),
                       ),
@@ -75,7 +75,7 @@ class RegScreen extends StatelessWidget {
                             suffixIcon: Icon(Icons.visibility_off,color: Colors.grey,),
                             label: Text('Conform Password',style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color:Color(0xffB81736),
+                             color:Color.fromARGB(255, 146, 144, 247),
                             ),)
                         ),
                       ),
@@ -89,8 +89,8 @@ class RegScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                           gradient: const LinearGradient(
                               colors: [
-                                Color(0xffB81736),
-                                Color(0xff281537),
+                          Color.fromARGB(255, 5, 21, 63),
+                          Color.fromARGB(255, 170, 63, 252),
                               ]
                           ),
                         ),

@@ -58,6 +58,7 @@ class loginScreen extends StatelessWidget {
                         label: Text('Password',style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color:Color.fromARGB(255, 146, 144, 247),
+                          
                         ),)
                     ),
                   ),
@@ -78,8 +79,8 @@ class loginScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xffB81736),
-                          Color(0xff281537),
+                          Color.fromARGB(255, 5, 21, 63),
+                          Color.fromARGB(255, 170, 63, 252),
                         ]
                       ),
                     ),
@@ -103,7 +104,7 @@ class loginScreen extends StatelessWidget {
                         Text("Sign up",style: TextStyle(///done login page
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
-                            color: Colors.black
+                            color: Color.fromARGB(255, 171, 204, 204)
                         ),),
                       ],
                     ),

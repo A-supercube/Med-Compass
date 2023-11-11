@@ -10,28 +10,30 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('MED-COMPASS'),
-      ),
-      body: _buildSelectedScreen(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: _buildSelectedScreen(),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.white,
+          currentIndex: _selectedIndex,
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -45,17 +47,34 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHomeScreen() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildCurvedSearchBar(), // Use the curved search bar
-          SizedBox(height: 16),
-          // Add other content for the home screen as needed
-          Text('Nearby Hospitals...'),
-        ],
-      ),
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                  'assets/nurse.jpg'), // Replace with your image path
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 30,
+            bottom: 16,
+            left: 16,
+            right: 16,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildCurvedSearchBar(),
+              SizedBox(height: 16),
+              _buildNearbyHospitals(), // Display nearby hospitals using cards
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -68,7 +87,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildCurvedSearchBar() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.lightBlue[100],
+        color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
       ),
       child: TextField(
@@ -81,8 +100,77 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget _buildNearbyHospitals() {
+    // Dummy data for nearby hospitals
+    List<Hospital> nearbyHospitals = [
+      Hospital(name: 'Hospital A', photoUrl: 'assets/hospital_1.jpg'),
+      Hospital(name: 'Hospital B', photoUrl: 'assets/hospital_2.jpg'),
+      Hospital(name: 'Hospital C', photoUrl: 'assets/hospital_3.jpg'),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Nearby Hospitals',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 16),
+        Container(
+          height: 200, // Adjust the height as needed
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: nearbyHospitals.length,
+            itemBuilder: (context, index) {
+              return _buildHospitalCard(nearbyHospitals[index]);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHospitalCard(Hospital hospital) {
+    return Card(
+      margin: EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 120, // Adjust the height as needed
+            width: 200, // Adjust the width as needed
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(hospital.photoUrl),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              hospital.name,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
+class Hospital {
+  final String name;
+  final String photoUrl;
 
-
-
+  Hospital({required this.name, required this.photoUrl});
+}
