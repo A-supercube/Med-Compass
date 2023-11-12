@@ -1,137 +1,149 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter/cupertino.dart';
 
 
-class BuildProfileScreen extends StatefulWidget {
-  const BuildProfileScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  _BuildProfileScreenState createState() => _BuildProfileScreenState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _BuildProfileScreenState extends State<BuildProfileScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController sexController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController dobController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    // Load user details from JSON file when the screen is initialized
-    loadUserDetails();
-  }
-
-  Future<void> loadUserDetails() async {
-    // Read user details from a JSON file (for simplicity, let's assume the file exists)
-    String jsonString = await File('assets/profile.json').readAsString();
-
-    // Parse the JSON string to a Map
-    Map<String, dynamic> userDetails = json.decode(jsonString);
-
-    // Update text controllers with the loaded details
-    nameController.text = userDetails['name'] ?? '';
-    emailController.text = userDetails['email'] ?? '';
-    phoneNumberController.text = userDetails['phoneNumber'] ?? '';
-    sexController.text = userDetails['sex'] ?? '';
-    addressController.text = userDetails['address'] ?? '';
-    dobController.text = userDetails['dob'] ?? '';
-  }
-
-  Future<void> saveUserDetails() async {
-    // Save user details to a JSON file
-    Map<String, dynamic> userDetails = {
-      'name': nameController.text,
-      'email': emailController.text,
-      'phoneNumber': phoneNumberController.text,
-      'sex': sexController.text,
-      'address': addressController.text,
-      'dob': dobController.text,
-    };
-
-    String jsonString = json.encode(userDetails);
-
-    // Write to the JSON file (for simplicity, let's assume the file exists)
-    await File('path_to_your_json_file.json').writeAsString(jsonString);
-  }
+class _ProfileScreenState extends State<ProfileScreen> {
+  TextEditingController nameController =
+      TextEditingController(text: 'Ahad Hashmi');
+  TextEditingController countryCodeController =
+      TextEditingController(text: '+1');
+  TextEditingController phoneController =
+      TextEditingController(text: '1234567890');
+  TextEditingController addressController =
+      TextEditingController(text: 'abc address, xyz city');
+  TextEditingController emailController =
+      TextEditingController(text: 'ahadhashmideveloper@gmail.com');
+  TextEditingController genderController = TextEditingController(text: 'Male');
+  TextEditingController dobController =
+      TextEditingController(text: '1990-01-01');
+  bool isEditing = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('assets/avatar_profile.jpg'),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: ListView(
+          children: [
+            const SizedBox(height: 40),
+            const CircleAvatar(
+              radius: 70,
+              backgroundImage: AssetImage('assets/images/user.JPG'),
+            ),
+            const SizedBox(height: 20),
+            _editableItem('Name', nameController, CupertinoIcons.person),
+            const SizedBox(height: 10),
+            _editableItem(
+                'Country Code', countryCodeController, CupertinoIcons.globe),
+            const SizedBox(height: 10),
+            _editableItem('Phone', phoneController, CupertinoIcons.phone),
+            const SizedBox(height: 10),
+            _editableItem(
+                'Address', addressController, CupertinoIcons.location),
+            const SizedBox(height: 10),
+            _editableItem('Email', emailController, CupertinoIcons.mail),
+            const SizedBox(
+              height: 20,
+            ),
+            _editableItem('Gender', genderController, CupertinoIcons.person_2),
+            const SizedBox(height: 10),
+            _editableItem(
+                'Date of Birth', dobController, CupertinoIcons.calendar),
+            const SizedBox(
+              height: 20,
+            ),
+            if (isEditing)
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _saveChanges();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(15),
+                  ),
+                  child: const Text('Save Changes'),
                 ),
               ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+            if (!isEditing)
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      isEditing = true;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(15),
+                  ),
+                  child: const Text('Edit Profile'),
                 ),
               ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: phoneNumberController,
-                decoration: const InputDecoration(
-                  labelText: 'Phone Number',
-                ),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: sexController,
-                decoration: const InputDecoration(
-                  labelText: 'Sex',
-                ),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: addressController,
-                decoration: const InputDecoration(
-                  labelText: 'Address',
-                ),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: dobController,
-                decoration: const InputDecoration(
-                  labelText: 'Date of Birth',
-                ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  // Call function to save user details when the "Update" button is pressed
-                  await saveUserDetails();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Details updated successfully!'),
-                    ),
-                  );
-                },
-                child: const Text('Update'),
-              ),
-            ],
-          ),
+          ],
         ),
       ),
     );
+  }
+
+  Widget _editableItem(
+      String title, TextEditingController controller, IconData iconData) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(0, 5),
+            color: Colors.deepOrange.withOpacity(.2),
+            spreadRadius: 2,
+            blurRadius: 10,
+          )
+        ],
+      ),
+      child: ListTile(
+        title: Text(title),
+        subtitle: isEditing
+            ? TextField(
+                controller: controller,
+                decoration: const InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.symmetric(vertical: 5),
+                ),
+              )
+            : Text(controller.text),
+        leading: Icon(iconData),
+        trailing: isEditing
+            ? null
+            : Icon(Icons.arrow_forward, color: Colors.grey.shade400),
+        tileColor: Colors.white,
+      ),
+    );
+  }
+
+  void _showSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _saveChanges() async {
+    setState(() {
+      isEditing = false;
+    });
+
+    _showSnackbar('Profile updated!');
   }
 }

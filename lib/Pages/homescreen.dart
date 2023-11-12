@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     } else if (_selectedIndex == 1) {
       return SearchPage();
     } else {
-      return BuildProfileScreen();
+      return ProfileScreen();
     }
   }
 
