@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/pages/searchscreen.dart';
 import 'package:med_compass/pages/profile_screen.dart';
+import 'package:med_compass/pages/searchscreen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,19 +14,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          leading: const Center(
-            child: Text(
-              'MED-COMPASS',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28,
-              ),
-            ),
-          ),
-          leadingWidth: 450,
-        ),
         body: _buildSelectedScreen(),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
@@ -43,7 +30,6 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profile',
@@ -60,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     } else if (_selectedIndex == 1) {
       return SearchPage();
     } else {
-      return BuildProfileScreen();
+      return ProfileScreen();
     }
   }
 
@@ -86,13 +72,54 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // _buildCurvedSearchBar(),
+              _buildCurvedSearchBar(),
               SizedBox(height: 16),
               _buildNearbyHospitals(), // Display nearby hospitals using cards
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildProfileScreen() {
+    return const Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: AssetImage(
+                'assets/avatar_profile.jpg'), // Replace with your image path
+          ),
+          SizedBox(height: 16),
+          Text(
+            'John Doe',
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(height: 8),
+          Text(
+            'Gmail',
+            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+          SizedBox(height: 16),
+          Text(
+            'Bio:',
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 24, 22, 22)),
+          ),
+          SizedBox(height: 8),
+          Text(
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+            'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+          ),
+        ],
+      ),
     );
   }
 
@@ -126,6 +153,25 @@ class _HomePageState extends State<HomePage> {
       children: [
         const Text(
           'Nearby Hospitals',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 16),
+        Container(
+          height: 200, // Adjust the height as needed
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: nearbyHospitals.length,
+            itemBuilder: (context, index) {
+              return _buildHospitalCard(nearbyHospitals[index]);
+            },
+          ),
+        ),
+        const Text(
+          'Top Hospitals',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

@@ -51,7 +51,7 @@ class loginScreen extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         label: Text(
-                          'Gmail',
+                          'Email',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 146, 144, 247),
