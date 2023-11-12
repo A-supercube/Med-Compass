@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:med_compass/searchscreen.dart';
+import 'package:med_compass/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,6 +14,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: const Center(
+            child: Text(
+              'MED-COMPASS',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+              ),
+            ),
+          ),
+          leadingWidth: 450,
+        ),
         body: _buildSelectedScreen(),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
@@ -28,6 +43,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profile',
@@ -41,8 +57,10 @@ class _HomePageState extends State<HomePage> {
   Widget _buildSelectedScreen() {
     if (_selectedIndex == 0) {
       return _buildHomeScreen();
+    } else if (_selectedIndex == 1) {
+      return SearchPage();
     } else {
-      return _buildProfileScreen();
+      return BuildProfileScreen();
     }
   }
 
@@ -68,19 +86,13 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildCurvedSearchBar(),
+              // _buildCurvedSearchBar(),
               SizedBox(height: 16),
               _buildNearbyHospitals(), // Display nearby hospitals using cards
             ],
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildProfileScreen() {
-    return Center(
-      child: Text('Profile Screen Content'),
     );
   }
 

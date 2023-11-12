@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:med_compass/homescreen.dart';
-
+//import 'package:med_compass/homescreen.dart';
 
 import 'package:med_compass/WelcomeScreen.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: ('inter'),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: WelcomeScreen(),
     );
   }
 }
