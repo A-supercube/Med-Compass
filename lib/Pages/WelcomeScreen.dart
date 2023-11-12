@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/regScreen.dart';
+import 'package:med_compass/Pages/regScreen.dart';
 
 import 'loginScreen.dart';
 

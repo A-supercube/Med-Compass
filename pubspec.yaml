@@ -60,6 +60,7 @@ flutter:
     - assets/hospital_1.jpg
     - assets/hospital_2.jpg
     - assets/hospital_3.jpg
+    - assets/profile.json
  
   # included with your application, so that you can use the icons in
   # the material Icons class.

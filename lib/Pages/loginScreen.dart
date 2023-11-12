@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/homescreen.dart';
+import 'package:med_compass/Pages/homescreen.dart';
 
 class loginScreen extends StatelessWidget {
   const loginScreen({Key? key}) : super(key: key);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:med_compass/homescreen.dart';
 
-import 'package:med_compass/WelcomeScreen.dart';
+import 'package:med_compass/Pages/WelcomeScreen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
