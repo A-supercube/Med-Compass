@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/WelcomeScreen.dart';
+import 'package:med_compass/pages/WelcomeScreen.dart';
 
 class BuildProfileScreen extends StatelessWidget {
   const BuildProfileScreen({super.key});

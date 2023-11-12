@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/searchscreen.dart';
-import 'package:med_compass/profile_screen.dart';
+import 'package:med_compass/pages/searchscreen.dart';
+import 'package:med_compass/pages/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
