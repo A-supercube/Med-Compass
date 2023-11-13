@@ -62,6 +62,9 @@ flutter:
     - assets/hospital_1.jpg
     - assets/hospital_2.jpg
     - assets/hospital_3.jpg
+    - assets/google_icon.svg
+    - assets/github_icon.svg
+    - assets/twitter_icon.svg
  
   # included with your application, so that you can use the icons in
   # the material Icons class.
