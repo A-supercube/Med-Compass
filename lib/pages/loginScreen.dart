@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(
                           builder: (context) => const MessagesPage()));
                 },
-                child: const Text('Read Messages as Guest'),
+                child: const Text('Forgot Password'),
               ),
               const SizedBox(height: 16),
               Row(
@@ -139,29 +139,6 @@ class _LoginPageState extends State<LoginPage> {
                     child:
                         SvgPicture.asset('assets/google_icon.svg', width: 12),
                   ),
-                  ElevatedButton(
-                    onPressed: () => signInWithProvider('apple'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white),
-                    child: SvgPicture.asset('assets/apple_icon.svg', width: 12),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => signInWithProvider('github'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white),
-                    child:
-                        SvgPicture.asset('assets/github_icon.svg', width: 12),
-                  ),
-                  ElevatedButton(
-                    onPressed: () => signInWithProvider('twitter'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white),
-                    child:
-                        SvgPicture.asset('assets/twitter_icon.svg', width: 12),
-                  )
                 ],
               ),
             ],
