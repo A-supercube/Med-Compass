@@ -12,18 +12,18 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController nameController =
-      TextEditingController(text: 'Ahad Hashmi');
+      TextEditingController(text: 'Ananthakrishnan');
   TextEditingController countryCodeController =
-      TextEditingController(text: '+1');
+      TextEditingController(text: '+91');
   TextEditingController phoneController =
       TextEditingController(text: '1234567890');
   TextEditingController addressController =
       TextEditingController(text: 'abc address, xyz city');
   TextEditingController emailController =
-      TextEditingController(text: 'ahadhashmideveloper@gmail.com');
+      TextEditingController(text: 'ananthakrishnanks18@gmail.com');
   TextEditingController genderController = TextEditingController(text: 'Male');
   TextEditingController dobController =
-      TextEditingController(text: '1990-01-01');
+      TextEditingController(text: '2000-01-01');
   bool isEditing = false;
 
   @override
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(height: 40),
             CircleAvatar(
               radius: 70,
-              backgroundImage: AssetImage('assets/images/user.JPG'),
+              backgroundImage: AssetImage('assets/images/user.SVG'),
             ),
             const SizedBox(height: 20),
             _editableItem('Name', nameController, CupertinoIcons.person),

@@ -1,10 +1,6 @@
+import 'package:med_compass/pages/loginscreen.dart';
+import 'package:med_compass/pages/tabs_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-//import 'package:med_compass/homescreen.dart';
-
-// import 'package:med_compass/WelcomeScreen.dart';
-import 'package:med_compass/pages/loginScreen.dart';
-import 'package:med_compass/pages/homescreen.dart';
 import 'package:provider/provider.dart';
 
 import 'appwrite/auth_api.dart';
@@ -24,15 +20,15 @@ class MyApp extends StatelessWidget {
     print('TOP CHANGE Value changed to: $value!');
 
     return MaterialApp(
-        title: 'Med Compass',
+        title: 'Appwrite Auth Demo',
         debugShowCheckedModeBanner: false,
         home: value == AuthStatus.uninitialized
             ? const Scaffold(
                 body: Center(child: CircularProgressIndicator()),
               )
             : value == AuthStatus.authenticated
-                ? HomePage()
-                : loginScreen(),
+                ? const TabsPage()
+                : const LoginPage(),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: const Color(0xFFE91052),
