@@ -54,7 +54,7 @@ class WelcomeScreen extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SearchPage()));
+                    builder: (context) => LoginPage()));
           } ,
             child: Container(
               // alignment: Alignment.bottomCenter,
