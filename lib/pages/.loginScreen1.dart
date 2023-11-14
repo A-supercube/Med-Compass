@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/appwrite/auth_api.dart';
-import 'package:provider/provider.dart';
+import 'package:med_compass/pages/homescreen.dart';
 
-class RegScreen extends StatelessWidget {
-  const RegScreen({Key? key}) : super(key: key);
+class loginScreen extends StatelessWidget {
+  const loginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
-      //thanks for watching
       children: [
         Container(
           height: double.infinity,
@@ -23,7 +21,7 @@ class RegScreen extends StatelessWidget {
           child: const Padding(
             padding: EdgeInsets.only(top: 60.0, left: 22),
             child: Text(
-              'Create Your\nAccount',
+              'Hello\nSign in!',
               style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
@@ -53,57 +51,41 @@ class RegScreen extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         label: Text(
-                          'Full Name',
+                          'Email',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 146, 144, 247),
                           ),
-                        )),
+                        ),),
                   ),
                   const TextField(
                     decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Colors.grey,
+                      suffixIcon: Icon(
+                        Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
+                      label: Text(
+                        'Password',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 146, 144, 247),
                         ),
-                        label: Text(
-                          'Phone or Gmail',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 146, 144, 247),
-                          ),
-                        )),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        label: Text(
-                          'Password',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 146, 144, 247),
-                          ),
-                        )),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        label: Text(
-                          'Confirm Password',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 146, 144, 247),
-                          ),
-                        )),
+                      ),
+                    ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
+                  ),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                        color: Color(0xff281537),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 70,
@@ -118,18 +100,26 @@ class RegScreen extends StatelessWidget {
                         Color.fromARGB(255, 170, 63, 252),
                       ]),
                     ),
-                    child: const Center(
-                      child: Text(
-                        'SIGN IN',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.white),
+                    child: Center(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        },
+                        child: const Text(
+                          'SIGN IN',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 80,
+                    height: 150,
                   ),
                   const Align(
                     alignment: Alignment.bottomRight,
@@ -149,7 +139,7 @@ class RegScreen extends StatelessWidget {
                               ///done login page
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
-                              color: Colors.black),
+                              color: Color.fromARGB(255, 171, 204, 204)),
                         ),
                       ],
                     ),

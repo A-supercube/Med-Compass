@@ -1,7 +1,11 @@
-import 'package:med_compass/pages/loginscreen.dart';
+import 'package:med_compass/pages/loginScreen.dart';
+import 'package:med_compass/pages/loginscreen1.dart';
+import 'package:med_compass/pages/regScreen.dart';
+// import 'package:med_compass/pages/regscreen1.dart';
 import 'package:med_compass/pages/tabs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 
 import 'appwrite/auth_api.dart';
 
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
                 : const LoginPage(),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: const Color(0xFFE91052),
+            primary: Colors.blue,
           ),
         ));
   }

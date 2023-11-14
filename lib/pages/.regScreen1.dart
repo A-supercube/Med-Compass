@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:med_compass/pages/homescreen.dart';
+import 'package:med_compass/appwrite/auth_api.dart';
+import 'package:provider/provider.dart';
 
-class loginScreen extends StatelessWidget {
-  const loginScreen({Key? key}) : super(key: key);
+class RegScreen extends StatelessWidget {
+  const RegScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
+      //thanks for watching
       children: [
         Container(
           height: double.infinity,
@@ -21,7 +23,7 @@ class loginScreen extends StatelessWidget {
           child: const Padding(
             padding: EdgeInsets.only(top: 60.0, left: 22),
             child: Text(
-              'Hello\nSign in!',
+              'Create Your\nAccount',
               style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
@@ -45,6 +47,24 @@ class loginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const TextField(
+                    controller:nameTextController ,
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.check,
+                        color: Colors.grey,
+                      ),
+                      label: Text(
+                        'Full Name',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 146, 144, 247),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const TextField(
+                                          controller: emailTextController,
+
                     decoration: InputDecoration(
                         suffixIcon: Icon(
                           Icons.check,
@@ -59,33 +79,37 @@ class loginScreen extends StatelessWidget {
                         )),
                   ),
                   const TextField(
+                                          controller: passwordTextController,
+
                     decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.visibility_off,
-                        color: Colors.grey,
-                      ),
-                      label: Text(
-                        'Password',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 146, 144, 247),
+                        suffixIcon: Icon(
+                          Icons.visibility_off,
+                          color: Colors.grey,
                         ),
-                      ),
-                    ),
+                        label: Text(
+                          'Password',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 146, 144, 247),
+                          ),
+                        )),
+                  ),
+                  const TextField(
+                    decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        label: Text(
+                          'Confirm Password',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 146, 144, 247),
+                          ),
+                        )),
                   ),
                   const SizedBox(
-                    height: 20,
-                  ),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                        color: Color(0xff281537),
-                      ),
-                    ),
+                    height: 10,
                   ),
                   const SizedBox(
                     height: 70,
@@ -100,26 +124,18 @@ class loginScreen extends StatelessWidget {
                         Color.fromARGB(255, 170, 63, 252),
                       ]),
                     ),
-                    child: Center(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage()));
-                        },
-                        child: const Text(
-                          'SIGN IN',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.white),
-                        ),
+                    child: const Center(
+                      child: Text(
+                        'SIGN IN',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.white),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 150,
+                    height: 80,
                   ),
                   const Align(
                     alignment: Alignment.bottomRight,
@@ -139,7 +155,7 @@ class loginScreen extends StatelessWidget {
                               ///done login page
                               fontWeight: FontWeight.bold,
                               fontSize: 17,
-                              color: Color.fromARGB(255, 171, 204, 204)),
+                              color: Colors.black),
                         ),
                       ],
                     ),
