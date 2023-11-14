@@ -1,6 +1,8 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:med_compass/appwrite/auth_api.dart';
 import 'package:flutter/material.dart';
+import 'package:med_compass/pages/WelcomeScreen.dart';
+import 'package:med_compass/pages/loginScreen.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -54,11 +56,16 @@ class _RegisterPageState extends State<RegisterPage> {
             title: Text(title),
             content: Text(text),
             actions: [
-              ElevatedButton(
+              MaterialButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text('Ok'))
+                  child: const Text('Ok',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ))
             ],
           );
         });
@@ -92,6 +99,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
+            ),
+          ),
+           Align(
+            alignment: Alignment.topRight,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen()));
+              },
+              child: const Icon(Icons.exit_to_app),
             ),
           ),
           Padding(
@@ -203,6 +222,21 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     const SizedBox(height: 16),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()));
+                      },
+                      child: const Text(
+                        'Already have an Account?',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                     
                   ],
                 ),

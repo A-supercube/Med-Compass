@@ -1,5 +1,6 @@
+import 'package:med_compass/pages/WelcomeScreen.dart';
 import 'package:med_compass/pages/loginScreen.dart';
-import 'package:med_compass/pages/loginscreen1.dart';
+// import 'package:med_compass/pages/loginscreen1.dart';
 import 'package:med_compass/pages/regScreen.dart';
 // import 'package:med_compass/pages/regscreen1.dart';
 import 'package:med_compass/pages/tabs_page.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
               )
             : value == AuthStatus.authenticated
                 ? const TabsPage()
-                : const LoginPage(),
+                : const WelcomeScreen(),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: Colors.blue,

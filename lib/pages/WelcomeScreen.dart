@@ -18,54 +18,37 @@ class WelcomeScreen extends StatelessWidget {
           Color.fromARGB(255, 235, 228, 240),
         ])),
         child: Column(children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 200.0),
-            //child: Image(image: AssetImage('assets/logo.png')),
-          ),
-          const SizedBox(
+          Container(
             height: 100,
+            width: double.infinity,
+
           ),
-          const Text(
-            'Welcome Back',
-            style: TextStyle(fontSize: 30, color: Colors.white),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
-            },
-            child: Container(
-              height: 53,
-              width: 320,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: Colors.white),
-              ),
-              child: const Center(
-                child: Text(
-                  'SIGN IN',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ),
+         
+          
+           Container(
+            
+            height: 200,
+            width: double.infinity,
+            decoration: const BoxDecoration(color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(25),bottomLeft: Radius.circular(25),)
             ),
+            child: Center(child: Text("djgnsdglsgm djgnsdglsgm djgnsdglsgm djgnsdglsgm djgnsdglsgm")),
+            
           ),
           const SizedBox(
-            height: 30,
+            height: 300,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterPage()));
-            },
+          MaterialButton(
+            
+            onPressed:() {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const LoginPage()));
+          } ,
             child: Container(
+              // alignment: Alignment.bottomCenter,
+              // margin: EdgeInsets.only(top: 20),
               height: 53,
               width: 320,
               decoration: BoxDecoration(
@@ -75,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               child: const Center(
                 child: Text(
-                  'SIGN UP',
+                  'Get Started',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

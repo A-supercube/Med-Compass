@@ -1,5 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:med_compass/appwrite/auth_api.dart';
+import 'package:med_compass/pages/WelcomeScreen.dart';
 import 'package:med_compass/pages/messages_page.dart';
 import 'package:med_compass/pages/regscreen.dart';
 import 'package:flutter/material.dart';
@@ -92,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
       // ),
       body: Stack(
         children: [
+         
           Container(
             height: double.infinity,
             width: double.infinity,
@@ -110,6 +112,18 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
+            ),
+          ),
+           Align(
+            alignment: Alignment.topRight,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen()));
+              },
+              child: const Icon(Icons.exit_to_app),
             ),
           ),
           Padding(
@@ -297,6 +311,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
           ),
+           Align(
+            alignment: Alignment.topRight,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen()));
+              },
+              child: const Icon(Icons.exit_to_app),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 200.0),
             child: Container(
@@ -372,6 +398,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                     ),
                     const SizedBox(height: 16),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterPage()));
+                      },
+                      child: const Text(
+                        'Create Account',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
