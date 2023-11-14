@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_compass/pages/regScreen.dart';
+import 'package:med_compass/pages/searchscreen.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 import 'loginScreen.dart';
 
@@ -8,6 +11,13 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -44,7 +54,7 @@ class WelcomeScreen extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const LoginPage()));
+                    builder: (context) => SearchPage()));
           } ,
             child: Container(
               // alignment: Alignment.bottomCenter,
@@ -67,9 +77,12 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          //const Spacer(),
-
-          //const Image(image: AssetImage('assets/social.png'))
+          // ElevatedButton(onPressed: (){
+          //   _launchURL('https://www.google.com/maps/dir/lisie+kaloor/sahara+cusat/');
+          // }, child: Icon(Icons.directions)),
+          // ElevatedButton(onPressed: (){
+          //   _launchURL('https://www.google.com/search?q=Anagas');
+          // }, child: Icon(Icons.search))
         ]),
       ),
     );
